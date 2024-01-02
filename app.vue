@@ -11,8 +11,9 @@
   </div>
 </template>
 
-<script setup>
-  const { data: weatherData, pending, error } = await useFetch(
-    'https://weather.tsukumijima.net/api/forecast/city/130010'
-  )
+<script setup lang="ts">
+
+const { data: weatherData, pending, error } = await useFetch(
+  'https://weather.tsukumijima.net/api/forecast/city/130010'
+)
 </script>
