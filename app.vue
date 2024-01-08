@@ -5,11 +5,9 @@
       <div v-for="(day, index) in weatherData.daily.time" :key="index">
         日付: {{ day.toLocaleDateString() }}
         <br>天気: <img :src="getWeatherImage(weatherData.daily.weatherCode[index])" alt="Weather icon">
-        {{ getWeatherImage(weatherData.daily.weatherCode[index]) }}
         <br>最高気温: {{ weatherData.daily.temperature2mMax[index] }}°C
         <br>最低気温: {{ weatherData.daily.temperature2mMin[index] }}°C
         <br>降水確率: {{ weatherData.daily.precipitationProbabilityMax[index] }}%
-        <hr>
       </div>
     </div>
     <div v-else>
@@ -21,8 +19,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-
-const sunny = "sunny.png"
 
 const weatherData = ref(null);
 
