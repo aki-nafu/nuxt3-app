@@ -6,14 +6,16 @@
     <v-main>
       <v-container>
         <div v-if="weatherData">
-          <v-row >
+          <v-row>
             <div v-for="(day, index) in weatherData.daily.time" :key="index">
-              <v-col>
-                日付: {{ day.toLocaleDateString() }}
-                <br>天気: <img :src="getWeatherImage(weatherData.daily.weatherCode[index])" alt="Weather icon">
-                <br>最高気温: {{ weatherData.daily.temperature2mMax[index] }}°C
-                <br>最低気温: {{ weatherData.daily.temperature2mMin[index] }}°C
-                <br>降水確率: {{ weatherData.daily.precipitationProbabilityMax[index] }}%
+              <v-col >
+                <v-card class="pa-6">
+                  {{ day.toLocaleDateString() }}
+                  <br><img :src="getWeatherImage(weatherData.daily.weatherCode[index])" alt="Weather icon">
+                  <br>最高気温: {{ weatherData.daily.temperature2mMax[index] }}°C
+                  <br>最低気温: {{ weatherData.daily.temperature2mMin[index] }}°C
+                  <br>降水確率: {{ weatherData.daily.precipitationProbabilityMax[index] }}%
+                </v-card>
               </v-col>
             </div>
           </v-row>
