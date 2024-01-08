@@ -1,20 +1,31 @@
 <template>
-  <div>
-    <h1>天気予報</h1>
-    <div v-if="weatherData">
-      <div v-for="(day, index) in weatherData.daily.time" :key="index">
-        日付: {{ day.toLocaleDateString() }}
-        <br>天気: <img :src="getWeatherImage(weatherData.daily.weatherCode[index])" alt="Weather icon">
-        <br>最高気温: {{ weatherData.daily.temperature2mMax[index] }}°C
-        <br>最低気温: {{ weatherData.daily.temperature2mMin[index] }}°C
-        <br>降水確率: {{ weatherData.daily.precipitationProbabilityMax[index] }}%
-      </div>
-    </div>
-    <div v-else>
-      天気データの取得中...
-    </div>
-    <img :src="`assets/icons/${sunny}.png`" />
-  </div>
+  <v-app>
+    <v-app-bar color="primary" app>
+      <v-toolbar-title>Weather Report</v-toolbar-title>
+    </v-app-bar>
+    <v-main>
+      <v-container>
+        <div v-if="weatherData">
+          <v-row >
+            <div v-for="(day, index) in weatherData.daily.time" :key="index">
+              <v-col>
+                日付: {{ day.toLocaleDateString() }}
+                <br>天気: <img :src="getWeatherImage(weatherData.daily.weatherCode[index])" alt="Weather icon">
+                <br>最高気温: {{ weatherData.daily.temperature2mMax[index] }}°C
+                <br>最低気温: {{ weatherData.daily.temperature2mMin[index] }}°C
+                <br>降水確率: {{ weatherData.daily.precipitationProbabilityMax[index] }}%
+              </v-col>
+            </div>
+          </v-row>
+        </div>
+        <div v-else>
+          天気データの取得中...
+        </div>
+      </v-container>
+    </v-main>
+    
+  </v-app>
+  
 </template>
 
 <script setup lang="ts">
